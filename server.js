@@ -19,24 +19,24 @@ const auth = {
 };
 
 app.get('/photos', async (req, res) => {
-    const response = await axios.get(BASE_URL + '/resources/image', {
+    const image = await axios.get(BASE_URL + '/resources/image', {
         auth,
         params: {
             next_cursor: req.query.next_cursor,
         },
     });
-    return res.send(response.data);
+    return res.send(image.data);
 });
 
 app.get('/search', async (req, res) => {
-    const response = await axios.get(BASE_URL + '/resources/search', {
+    const search = await axios.get(BASE_URL + '/resources/search', {
         auth,
         params: {
             expression: req.query.expression,
         },
     });
 
-    return res.send(response.data);
+    return res.send(search.data);
 });
 
 const PORT = config.PORT;
